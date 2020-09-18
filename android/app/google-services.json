@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "591364595094",
+    "firebase_url": "https://cherrypayqrapp.firebaseio.com",
+    "project_id": "cherrypayqrapp",
+    "storage_bucket": "cherrypayqrapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591364595094:android:7a220760b64243ff69d1b7",
+        "android_client_info": {
+          "package_name": "net.e4net.cherrypayqrapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591364595094-qqsclvnj5jeoingolq485mn64inrl8j8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.e4net.cherrypayqrapp",
+            "certificate_hash": "fba87fc5665d1fca7913ae6d3a59e2b913c2fe3b"
+          }
+        },
+        {
+          "client_id": "591364595094-nglhc5vptlvn7cs17gttj4bua4qi56lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN4P8as9UR6CN5vZGpr96UGZshO3kyqQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591364595094-nglhc5vptlvn7cs17gttj4bua4qi56lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
