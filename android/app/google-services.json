@@ -38,6 +38,14 @@
             {
               "client_id": "591364595094-nglhc5vptlvn7cs17gttj4bua4qi56lp.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "591364595094-1lt6m1t7jdrho41blr8nlcrbk9husv3l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.googleusercontent.apps.470733482055-f8mrcnip0ohiueki79mr2ut5g1h3nelb",
+                "app_store_id": "jhleelego@naver.com"
+              }
             }
           ]
         }

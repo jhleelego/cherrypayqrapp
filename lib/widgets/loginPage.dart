@@ -1,10 +1,14 @@
 import 'dart:convert';
 
 import 'package:cherrypayqrapp/constants/common_testCode.dart';
+import 'package:cherrypayqrapp/widgets/confirmationPage.dart';
+import 'package:cherrypayqrapp/widgets/plazaPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+
+import 'joinPage.dart';
 
 _LoginPageState pageState;
 
@@ -130,16 +134,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> _handleGetContact() async {
-    print('ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ_handleGetContact()ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ');
+    print('OOOOOOOOOOOOOOOOOOOO_handleGetContact() start');
     setState(() {
       _contactText = "Loading contact info...";
     });
-    print('ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ_currentUser.authHeadersㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ');
+    print('_currentUser.authHeaders : ${_currentUser.authHeaders}');
     final http.Response response = await http.get(
         'https://people.googleapis.com/v1/people/me/connections'
             '?requestMask.includeField=person.names',
         headers: await _currentUser.authHeaders);
 
+    print('response.body : ${response.body}');
     if (response.statusCode != 200) {
       setState(() {
         _contactText = "People API gave a ${response.statusCode} "
@@ -150,14 +155,25 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     final Map<String, dynamic> data = json.decode(response.body);
+    print('data : $data');
+    print('data : $data.providerData');
     final String namedContact = _pickFirstNamedContact(data);
     setState(() {
       if (namedContact != null) {
         _contactText = "I see you know $namedContact";
+        print('$namedContact');
       } else {
         _contactText = "No contacts to display.";
       }
     });
+    print('OOOOOOOOOOOOOOOOOOOO_handleGetContact() done');
+
+    bool result = true;
+    if(result){
+      Navigator.pushNamed(context, PlazaPage.PlazaPageRouteName,);
+    } else {
+      Navigator.pushNamed(context, JoinPage.JoinPageRouteName,);
+    }
   }
 
   String _pickFirstNamedContact(Map<String, dynamic> data) {
@@ -165,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
     final Map<String, dynamic> contact = connections?.firstWhere(
           (dynamic contact) => contact['names'] != null,
       orElse: () => null,
-    );
+    );;
     if (contact != null) {
       final Map<String, dynamic> name = contact['names'].firstWhere(
             (dynamic name) => name['displayName'] != null,
@@ -178,15 +194,26 @@ class _LoginPageState extends State<LoginPage> {
     return null;
   }
 
-
   //연결 하기
   Future<void> _handleSignIn() async {
     try {
-      await _googleSignIn.signIn();
+      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      print('googleUser : $googleUser');
     } catch (error) {
       print(error);
     }
   }
+
+
+  //연결 하기
+  // Future<void> _handleSignIn() async {
+  //   try {
+  //     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+  //     print('googleUser : $googleUser');
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
 
   //연결 끊기
   Future<void> _handleSignOut() async {
