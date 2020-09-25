@@ -2,7 +2,10 @@ import 'package:cherrypayqrapp/widgets/confirmationPage.dart';
 import 'package:cherrypayqrapp/widgets/introPage.dart';
 import 'package:cherrypayqrapp/widgets/joinPage.dart';
 import 'package:cherrypayqrapp/widgets/loginPage.dart';
+import 'package:cherrypayqrapp/widgets/paymentHistory.dart';
+import 'package:cherrypayqrapp/widgets/phoneAuthPage.dart';
 import 'package:cherrypayqrapp/widgets/plazaPage.dart';
+import 'package:cherrypayqrapp/widgets/settingUp.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -24,10 +27,13 @@ class MyApp extends StatelessWidget {
       routes: {
         IntroPage.IntroPageRouteName: (context) => IntroPage(),
         LoginPage.LoginPageRouteName: (context) => LoginPage(),
-        JoinPage.JoinPageRouteName: (context) => JoinPage(),
+        JoinPage.JoinPageRouteName: (context) => JoinPage(GoogleSignIn),
         ConfirmationPage.ConfirmationPageRouteName: (context) =>
             ConfirmationPage('_termsOfServiceChecked'),
-        PlazaPage.PlazaPageRouteName: (context) => PlazaPage(),
+        PlazaPage.PlazaPageRouteName: (context) => PlazaPage(GoogleSignIn),
+        SettingUpPage.SettingUpPageRouteName: (context) => SettingUpPage(GoogleSignIn),
+        PhoneAuthPage.PhoneAuthPageRouteName: (context) => PhoneAuthPage(),
+        PaymentHistoryPage.PaymentHistoryPageRouteName: (context) => PaymentHistoryPage(),
       },
     );
   }
